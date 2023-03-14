@@ -51,7 +51,7 @@ public class DriverTest {
     }
 
     @Test
-    @Disabled
+    //@Disabled
     public void blazefirst() {
         driver.get("https://blazedemo.com/");
         driver.manage().window().setSize(new Dimension(1314, 741));
