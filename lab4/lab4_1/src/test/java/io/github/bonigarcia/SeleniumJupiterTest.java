@@ -1,17 +1,14 @@
 package io.github.bonigarcia;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.slf4j.Logger;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -19,45 +16,25 @@ import static org.slf4j.LoggerFactory.getLogger;
 import static java.lang.invoke.MethodHandles.lookup;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class DriverTest {
 
-    static final Logger log = getLogger(lookup().lookupClass());
 
-    WebDriver driver;
+import io.github.bonigarcia.seljup.SeleniumJupiter;
+import org.junit.jupiter.api.extension.ExtendWith;
 
-    @BeforeAll
-    static void setup() {
-        System.setProperty("webdriver.chrome.driver","/home/thisbra/Downloads/chromedriver");
-    }
-    @BeforeEach
-    void create() {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
-        driver = new ChromeDriver(options);
-    }
+@ExtendWith(SeleniumJupiter.class)
+public class SeleniumJupiterTest {
+
+
 
     @Test
-    void testFirst() {
-        String setUrl = "https://bonigarcia.dev/selenium-webdriver-java/";
+//    @Disabled
+    public void blazeInstance(FirefoxDriver driver) {
 
-        driver.get(setUrl);
 
-        String title = driver.getTitle();
-
-        log.debug("The title of {} is {}", setUrl, title);
-
-        assertEquals("Hands-On Selenium WebDriver with Java", title);
-
-    }
-
-    @Test
-    @Disabled
-    public void blazefirst() {
         driver.get("https://blazedemo.com/");
         driver.manage().window().setSize(new Dimension(1314, 741));
 
-        String title1 = driver.getTitle();
-        assertEquals("BlazeDemo", title1, "Home Page title did not match expected");
+        assertEquals("BlazeDemo", driver.getTitle(), "Home Page title did not match expected");
 
         driver.findElement(By.name("fromPort")).click();
         {
@@ -73,13 +50,11 @@ public class DriverTest {
         driver.findElement(By.cssSelector(".form-inline:nth-child(4) > option:nth-child(5)")).click();
         driver.findElement(By.cssSelector(".btn-primary")).click();
 
-        String title2 = driver.getTitle();
-        assertEquals("BlazeDemo - reserve", title2, "Reserve Page title did not match expected");
+        assertEquals("BlazeDemo - reserve", driver.getTitle(), "Reserve Page title did not match expected");
 
         driver.findElement(By.cssSelector("tr:nth-child(2) .btn")).click();
 
-        String title3 = driver.getTitle();
-        assertEquals("BlazeDemo Purchase", title3, "Purchase Page title did not match expected");
+        assertEquals("BlazeDemo Purchase", driver.getTitle(), "Purchase Page title did not match expected");
 
         driver.findElement(By.id("inputName")).click();
         driver.findElement(By.id("inputName")).sendKeys("Thiago S. Brasil");
@@ -107,13 +82,8 @@ public class DriverTest {
         driver.findElement(By.cssSelector(".checkbox")).click();
         driver.findElement(By.cssSelector(".btn-primary")).click();
 
-        String title = driver.getTitle();
-        assertEquals("BlazeDemo Confirmation", title, "Confirmation Page title did not match expected");
+        assertEquals("BlazeDemo Confirmation", driver.getTitle(), "Confirmation Page title did not match expected");
     }
 
-    @AfterEach
-    void teardown() {
-        driver.quit();
-    }
 
 }
