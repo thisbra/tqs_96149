@@ -7,7 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class AirQualityApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(AirQualityApplication.class, args);
+
 	}
 
 }
