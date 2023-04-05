@@ -49,4 +49,14 @@ public class CacheStatisticTest {
         assertEquals(1, cacheStatistic.getFounds());
         assertEquals(2, cacheStatistic.getRequests());
     }
+
+    @Test
+    public void testTotalStore(){
+        CacheStatistic cacheStatistic = new CacheStatistic();
+        cacheStatistic.addTotalStored();
+        cacheStatistic.addTotalStored();
+
+        assertEquals(2, cacheStatistic.getTotalStored());
+
+    }
 }

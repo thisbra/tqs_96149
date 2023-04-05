@@ -2,6 +2,7 @@ package ua.tqs.airQuality.service;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -15,11 +16,10 @@ public class WeatherService {
 
     UriComponentsBuilder uriBuilder;
 
+    @Autowired
     private CacheService cache;
 
     public WeatherService() {
-        cache = CacheService.getInstance();
-
         uriBuilder = UriComponentsBuilder.newInstance()
                 .scheme("http")
                 .host("api.waqi.info")

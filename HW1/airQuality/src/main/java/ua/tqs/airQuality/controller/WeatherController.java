@@ -1,6 +1,8 @@
 package ua.tqs.airQuality.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,8 +17,11 @@ public class WeatherController {
     private WeatherService weatherService;
 
     @GetMapping("/weather")
-    public Weather getWeather(@RequestParam("cityName") String cityName) {
+    public ResponseEntity<Weather> getWeather(@RequestParam("cityName") String cityName) {
         Weather weather = weatherService.getWeather(cityName);
-        return weather;
+        if (weather.getAqi() == null){
+            return new ResponseEntity<Weather>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<Weather>(weather, HttpStatus.OK);
     }
 }

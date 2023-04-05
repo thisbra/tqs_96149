@@ -27,7 +27,7 @@ public class WeatherServiceTest {
 
     @BeforeEach
     void setup() {
-        validResponse = new Weather();
+        Weather validResponse = new Weather();
         validResponse.setAqi(new BigDecimal(2));
         validResponse.setPm10(new BigDecimal(25.005));
         validResponse.setO3(new BigDecimal(25.005));
