@@ -1,0 +1,73 @@
+{
+  "id": "7dc8cafb-5cd7-4abf-816a-ac7d5789614d",
+  "version": "2.0",
+  "name": "airQuality",
+  "url": "http://localhost:8080",
+  "tests": [{
+    "id": "dbdce9c2-9e28-41fa-af49-02da7afc5a33",
+    "name": "lisbonSearch",
+    "commands": [{
+      "id": "4f1cf1aa-4c2f-4f51-8071-191530413db4",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "04216826-67d0-4658-8451-b74414531383",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "621x695",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "04464e8e-aac5-4c25-95a8-9a34b6574609",
+      "comment": "",
+      "command": "click",
+      "target": "id=inputCity",
+      "targets": [
+        ["id=inputCity", "id"],
+        ["name=cityName", "name"],
+        ["css=#inputCity", "css:finder"],
+        ["xpath=//input[@id='inputCity']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ef9af862-098a-4231-96a1-070f7b40c92c",
+      "comment": "",
+      "command": "type",
+      "target": "id=inputCity",
+      "targets": [
+        ["id=inputCity", "id"],
+        ["name=cityName", "name"],
+        ["css=#inputCity", "css:finder"],
+        ["xpath=//input[@id='inputCity']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "lisbon"
+    }, {
+      "id": "52d20de3-0451-45d4-be10-0c4668b036d8",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Enter')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "72deefc0-1b5a-4920-992e-683000a64dff",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["dbdce9c2-9e28-41fa-af49-02da7afc5a33"]
+  }],
+  "urls": ["http://localhost:8080/"],
+  "plugins": []
+}

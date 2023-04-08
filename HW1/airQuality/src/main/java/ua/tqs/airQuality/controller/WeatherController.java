@@ -1,5 +1,6 @@
 package ua.tqs.airQuality.controller;
 
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +17,8 @@ public class WeatherController {
     @Autowired
     private WeatherService weatherService;
 
-    @GetMapping("/weather")
+    @ApiOperation(value = "Air quality details from specified city")
+    @GetMapping("/aiqFromCity")
     public ResponseEntity<Weather> getWeather(@RequestParam("cityName") String cityName) {
         Weather weather = weatherService.getWeather(cityName);
         if (weather.getAqi() == null){

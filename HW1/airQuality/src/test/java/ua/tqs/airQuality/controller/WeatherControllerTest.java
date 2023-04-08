@@ -51,7 +51,7 @@ public class WeatherControllerTest {
 
         when(weatherService.getWeather(eq("recife"))).thenReturn(validWeather);
 
-        mvc.perform(get("/weather")
+        mvc.perform(get("/aiqFromCity")
                         .param("cityName", "recife")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -66,9 +66,11 @@ public class WeatherControllerTest {
 
         when(weatherService.getWeather(any())).thenReturn(invalidWeather);
 
-        mvc.perform(get("/weather").param("cityName", "recife").contentType(MediaType.APPLICATION_JSON))
+        mvc.perform(get("/aiqFromCity").param("cityName", "recife").contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNotFound());
 
         verify(weatherService, times(1)).getWeather(any());
     }
 }
+
+
